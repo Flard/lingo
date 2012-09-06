@@ -1,0 +1,40 @@
+body {
+    background-color: cyan;
+    margin: 0 auto;
+    font-family: Tahoma;
+}
+
+#container {
+
+}
+
+.row {
+    clear: both;
+}
+
+.letter {
+    background-color: #1353b7;
+
+    margin: 0 5px 5px 0;
+
+    width: 80px;
+    height: 80px;
+    float: left;
+
+    line-height: 64px;
+
+    font-size: 60px;
+
+    color: white;
+    text-align: center;
+
+    display: inline-block;
+}
+
+.letter.correct {
+    background-color: #790d1c;
+}
+
+.letter.inword {
+    background-color: #889136;
+}
