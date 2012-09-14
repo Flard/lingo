@@ -21,7 +21,7 @@ body {
     height: 80px;
     float: left;
 
-    line-height: 64px;
+    line-height: 75px;
 
     font-size: 60px;
 
@@ -36,5 +36,7 @@ body {
 }
 
 .letter.inword {
-    background-color: #889136;
+    /*background-color: #889136;*/
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(254,225,0,1) 0%,rgba(255,225,0,1) 63%,rgba(255,255,255,0) 65%,rgba(255,255,255,0) 100%), #1353b7;
+    
 }

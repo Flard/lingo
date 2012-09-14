@@ -14,4 +14,4 @@ app.configure(function(){
 // TODO: Success image
 // TODO: 5 wrong attempts animation
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
