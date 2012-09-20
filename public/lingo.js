@@ -31,6 +31,9 @@ $(function() {
             $container.append(row);
         }
 
+        var cellWidth = $('.letter').outerWidth(true);
+        $('.row').css('width', cellWidth * totalLetters);
+
         guessedLetters = word[0].rpad(' ', totalLetters);
         setupAttempt();
     };
@@ -107,6 +110,12 @@ $(function() {
         }
 
         attempts++;
+
+        if (attempts >= totalAttempts) {
+            failedWord();
+            return;
+        }
+
         setupAttempt();
     }
 

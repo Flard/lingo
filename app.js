@@ -13,5 +13,9 @@ app.configure(function(){
 // TODO: Graphical style
 // TODO: Success image
 // TODO: 5 wrong attempts animation
+// TODO: Full screen
 
-app.listen(process.env.PORT || 3000);
+var port = process.env.PORT || 3000;
+var host = process.env.HOST || '127.0.0.1';
+console.log('listing on http://'+host+':'+port);
+app.listen(port);
