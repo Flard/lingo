@@ -8,11 +8,8 @@ app.configure(function(){
 });
 
 // TODO: Separate control window
-// TODO: Word check animation
-// TODO: Correct Animation
 // TODO: Graphical style
 // TODO: Success image
-// TODO: 5 wrong attempts animation
 // TODO: Full screen
 
 var port = process.env.PORT || 3000;
