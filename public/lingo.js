@@ -84,7 +84,8 @@ $(function() {
 
         var availableLetters = currentWord.split('');
 
-        for(var i=0;i<totalLetters;i++) {
+        var animateLetterCheck = function(i) {
+
             var char = currentGuess[i];
             var correct = char == currentWord[i];
             var cell = cells[attempts][i];
@@ -102,25 +103,75 @@ $(function() {
                 cell.addClass('inword');
             }
 
+            if (i == (totalLetters - 1)) {
+
+                if (currentGuess == currentWord) {
+                    guessedWord();
+                    return;
+                }
+
+                attempts++;
+
+                if (attempts >= totalAttempts) {
+                    failedWord();
+                    return;
+                }
+
+                setupAttempt();
+
+            } else {
+                window.setTimeout(function() {
+                    animateLetterCheck(i+1);
+                }, 100);
+            }
+
+
         }
 
-        if (currentGuess == currentWord) {
-            guessedWord();
-            return;
-        }
+        animateLetterCheck(0);
 
-        attempts++;
 
-        if (attempts >= totalAttempts) {
-            failedWord();
-            return;
-        }
-
-        setupAttempt();
     }
 
     var guessedWord = function() {
+
         //TODO: Animation
+
+    }
+
+    var failedWord = function() {
+
+        for(var r=0;r<(totalAttempts-1);r++) {
+
+            for(var c=0;c<totalLetters;c++) {
+
+                var source = cells[r + 1][c];
+                cells[r][c].text(source.text()).attr('class', source.attr('class'));
+
+            }
+
+
+        }
+
+        for(var c=0;c<totalLetters;c++) {
+            cells[totalAttempts-1][c].text(' ').attr('class', 'letter');
+        }
+
+        var lastLetterStartDelay = 500;
+        var lastLetterDelay = 200;
+
+        var showLastLetter = function(index) {
+            cells[totalAttempts-1][index].text(currentWord[index]).attr('class', 'letter correct');
+            if (index < (totalLetters -1)) {
+                window.setTimeout(function() {
+                    showLastLetter(index+1);
+                }, lastLetterDelay);
+            }
+        }
+        window.setTimeout(function() {
+            showLastLetter(0);
+        }, lastLetterStartDelay);
+
     }
 
     $('input').keyup(function(e) {
