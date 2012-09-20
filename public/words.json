@@ -1,3 +1,10 @@
-WORDS
-LONGER
-LONGEST
+[{
+    "word": "WORD",
+    "image": "images/success.jpg"
+},{
+    "word": "GITHUB",
+    "image": "images/success.jpg"
+},{
+    "word": "DEVELOP",
+    "image": "images/success.jpg"
+}]
