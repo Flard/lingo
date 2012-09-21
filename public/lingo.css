@@ -30,8 +30,7 @@ body {
 
     display: inline-block;
 
-    -webkit-text-stroke-width: 0;
-    -webkit-text-stroke-color: black;
+
 }
 
 .letter.correct {
@@ -41,7 +40,8 @@ body {
 .letter.inword {
     /*background-color: #889136;*/
     background: -webkit-radial-gradient(center, ellipse cover, rgba(254,225,0,1) 0%,rgba(255,225,0,1) 63%,rgba(255,255,255,0) 65%,rgba(255,255,255,0) 100%), #1353b7;
-    
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #807100;    
 }
 
 .controls {
