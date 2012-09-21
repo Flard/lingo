@@ -1,8 +1,9 @@
 $(function() {
+    var words;
     var totalAttempts = 5;
     var totalLetters, attempts, cells, guessedLetters, currentWord, currentGuess;
     var mode;
-    var MODE_INIT = 1, MODE_INPUT = 2, MODE_CHECK = 3;
+    var MODE_INIT = 1, MODE_INPUT = 2, MODE_CHECK = 3, MODE_FINISHED = 4;
 
     var setupWord = function(word) {
 
@@ -98,7 +99,7 @@ $(function() {
             if (correct) {
                 cell.addClass('correct');
                 guessedLetters = guessedLetters.replaceAt(i, char);
-                console.log('"'+guessedLetters+'"', i, currentGuess[i]);
+                //console.log('"'+guessedLetters+'"', i, currentGuess[i]);
             } else if (p >= 0) {
                 cell.addClass('inword');
             }
@@ -135,7 +136,7 @@ $(function() {
 
     var guessedWord = function() {
 
-        //TODO: Animation
+        mode = MODE_FINISHED;
 
     }
 
@@ -149,8 +150,6 @@ $(function() {
                 cells[r][c].text(source.text()).attr('class', source.attr('class'));
 
             }
-
-
         }
 
         for(var c=0;c<totalLetters;c++) {
@@ -172,6 +171,7 @@ $(function() {
             showLastLetter(0);
         }, lastLetterStartDelay);
 
+        mode = MODE_FINISHED;
     }
 
     $('input').keyup(function(e) {
@@ -187,13 +187,27 @@ $(function() {
             } else {
                 console.log(e, e.keyCode);
             }
+        } else if (mode == MODE_FINISHED) {
+            if (e.keyCode == 13) {
+                nextWord();
+            }
         }
+
         e.preventDefault();
         return false;
     });
 
+    var nextWord = function() {
+        var word = words.splice(0, 1)[0];
+        setupWord(word.word);
+    }
 
-    setupWord('GITHUB');
+    $.get('/words.json', function(config) {
+        console.log('words', config);
+        words = config;
+        nextWord();
+    })
+
 
 });
 

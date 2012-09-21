@@ -12,6 +12,15 @@ app.configure(function(){
 // TODO: Success image
 // TODO: Full screen
 
+// TODO: socket.io commands
+
+/* Commands:
+ * - resetWord
+ * - setWord('WORD')
+ * - nextWord()
+ * - resetLine
+ */
+
 var port = process.env.PORT || 3000;
 var host = process.env.HOST || '127.0.0.1';
 console.log('listing on http://'+host+':'+port);

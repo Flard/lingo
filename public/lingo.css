@@ -4,6 +4,11 @@ body {
     font-family: Tahoma;
 }
 
+input {
+    background-color: #0B2D63;
+    border-color: black;
+}
+
 #container {
     margin-top: 20px;
 }
@@ -47,3 +52,4 @@ body {
 .controls {
     clear: both;
 }
+
