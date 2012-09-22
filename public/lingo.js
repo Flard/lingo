@@ -3,7 +3,8 @@ $(function() {
     var totalAttempts = 5;
     var totalLetters, attempts, cells, guessedLetters, currentWord, currentGuess;
     var mode;
-    var MODE_INIT = 1, MODE_INPUT = 2, MODE_CHECK = 3, MODE_FINISHED = 4;
+    var MODE_INIT = 1, MODE_INPUT = 2, MODE_CHECK = 3, MODE_FINISHED = 4, MODE_FINISHED_IMAGE = 5;
+    var currentGameConfig;
 
     var setupWord = function(word) {
 
@@ -174,6 +175,22 @@ $(function() {
         mode = MODE_FINISHED;
     }
 
+    var showImage = function(url) {
+        var $container = $('#container');
+        $container.empty();
+        var $img = $('<img src="'+url+'" width="1024" height="768" />');
+        $container.append($img);
+    }
+
+    var endGame = function() {
+        if (currentGameConfig.image) {
+            showImage(currentGameConfig.image);
+            mode = MODE_FINISHED_IMAGE;
+        } else {
+            nextWord();
+        }
+    }
+
     $('input').keyup(function(e) {
 
         if (mode == MODE_INPUT) {
@@ -189,6 +206,10 @@ $(function() {
             }
         } else if (mode == MODE_FINISHED) {
             if (e.keyCode == 13) {
+                endGame();
+            }
+        } else if (mode == MODE_FINISHED_IMAGE) {
+            if (e.keyCode == 13) {
                 nextWord();
             }
         }
@@ -198,8 +219,10 @@ $(function() {
     });
 
     var nextWord = function() {
-        var word = words.splice(0, 1)[0];
-        setupWord(word.word);
+        if (words.length > 0) {
+            currentGameConfig = words.splice(0, 1)[0];
+            setupWord(currentGameConfig.word);
+        }
     }
 
     $.get('/words.json', function(config) {

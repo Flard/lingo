@@ -1,10 +1,10 @@
 [{
     "word": "WORD",
-    "image": "images/success.jpg"
+    "image": "http://placehold.it/1024x768"
 },{
     "word": "GITHUB",
-    "image": "images/success.jpg"
+    "image": "http://placehold.it/1024x768"
 },{
     "word": "DEVELOP",
-    "image": "images/success.jpg"
+    "image": "http://placehold.it/1024x768"
 }]
