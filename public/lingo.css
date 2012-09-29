@@ -11,6 +11,7 @@ input {
 
 #container {
     margin-top: 20px;
+    text-align: center;
 }
 
 .row {
@@ -35,6 +36,12 @@ input {
 
     display: inline-block;
 
+
+}
+
+#container img {
+
+    margin-top: -20px;
 
 }
 

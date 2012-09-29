@@ -1,4 +1,7 @@
 $(function() {
+
+    // Constance & Vriend?
+
     var words;
     var totalAttempts = 5;
     var totalLetters, attempts, cells, guessedLetters, currentWord, currentGuess;
@@ -9,6 +12,10 @@ $(function() {
     var setupWord = function(word) {
 
         console.log('setupWord', word);
+        if (!word) {
+            endGame();
+            return;
+        }
 
         // reset vars
         currentWord = word;
@@ -74,7 +81,7 @@ $(function() {
         i -= 1;
         currentGuess = currentGuess.substring(0, i);
         var c = cells[attempts][i];
-        c.html('&nbsp;');
+        c.html('.');
     }
 
     var onEnterClick = function() {
